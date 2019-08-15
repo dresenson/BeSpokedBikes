@@ -1,0 +1,41 @@
+<div class="salespersons view indent">
+  <div class="container">
+    <header>
+      <h3>
+        <span class="glyphicon glyphicon-list-alt"></span>
+        {{ title }}
+      </h3>
+    </header>
+    <br />
+    <div class="container">
+      <div class="row grid-container">
+        <div class="col-md-10">
+          <div class="table">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th (click)="sort('firstName')">Salesperson</th>
+                  <th (click)="sort('lastName')">Salesperson Commission</th>
+                  <th (click)="sort('address')">Commission Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let salesperson of salespersonsreport">
+                  <td>{{ salesperson.salesperson}}</td>
+                  <td>{{ salesperson.salespersonCommission }}</td>
+                  <td>{{ salesperson.commissionDate | date: 'dd/MM/yyyy' }}</td>
+                </tr>
+                <tr *ngIf="!salespersonsreport.length">
+                  <td>&nbsp;</td>
+                  <td colspan="6">No Records Found</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
