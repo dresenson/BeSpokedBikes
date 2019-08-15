@@ -18,6 +18,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductService } from './core/product.service';
 import { SaleComponent } from './sale/sale.component'
 import { SaleService } from './core/sale.service';
+import { Sorter } from './core/sorter';
 import { SalespersonreportComponent } from './salespersonreport/salespersonreport.component';
 
 @NgModule({
@@ -47,7 +48,7 @@ import { SalespersonreportComponent } from './salespersonreport/salespersonrepor
       
     ])
   ],
-  providers: [CustomerService, SalespersonService, ProductService, SaleService],
+  providers: [CustomerService, SalespersonService, ProductService, SaleService, Sorter],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

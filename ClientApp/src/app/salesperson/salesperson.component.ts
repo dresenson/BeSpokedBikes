@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Sorter } from '../core/sorter';
 import { ISalesperson } from '../shared/interfaces';
 import { SalespersonService } from '../core/salesperson.service';
 
@@ -11,7 +12,7 @@ export class SalespersonComponent implements OnInit {
 
   title: string;
   salespersons: ISalesperson[] = [];
-  constructor(private salespersonService: SalespersonService) { }
+  constructor(private sorter: Sorter, private salespersonService: SalespersonService) { }
 
   ngOnInit() {
     this.title = 'Salespersons';
@@ -24,5 +25,9 @@ export class SalespersonComponent implements OnInit {
       .subscribe((response: ISalesperson[]) => { this.salespersons = response;},
         (err: any) => console.log(err),
       () => console.log('getSalespersons() retrieved salespersons'))
+  }
+
+  sort(prop: string) {
+    this.sorter.sort(this.salespersons, prop);
   }
 }

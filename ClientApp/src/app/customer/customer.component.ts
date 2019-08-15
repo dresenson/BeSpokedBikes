@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Sorter } from '../core/sorter';
 import { ICustomer } from '../shared/interfaces';
 import { CustomerService } from '../core/customer.service';
 
@@ -11,7 +12,7 @@ export class CustomerComponent implements OnInit {
 
   title: string;
   customers: ICustomer[] = [];
-  constructor(private customerService: CustomerService) { }
+  constructor(private sorter: Sorter, private customerService: CustomerService) { }
 
   ngOnInit() {
     this.title = 'Customers';
@@ -24,5 +25,9 @@ export class CustomerComponent implements OnInit {
       .subscribe((response: ICustomer[]) => { this.customers = response; },
       (err: any) => console.log(err),
       () => console.log('getCustomersPage() retrieved customers'))
+  }
+
+  sort(prop: string) {
+    this.sorter.sort(this.customers, prop);
   }
 }

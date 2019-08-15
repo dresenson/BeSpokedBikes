@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Sorter } from '../core/sorter';
 import { IProduct } from '../shared/interfaces';
 import { ProductService } from '../core/product.service';
 
@@ -11,7 +12,7 @@ export class ProductComponent implements OnInit {
 
   title: string;
   products: IProduct[] = [];
-  constructor(private productService: ProductService) { }
+  constructor(private sorter: Sorter, private productService: ProductService) { }
 
   ngOnInit() {
     this.title = 'Products';
@@ -26,4 +27,7 @@ export class ProductComponent implements OnInit {
       () => console.log('getProducts() retrieved products'))
   }
 
+  sort(prop: string) {
+    this.sorter.sort(this.products, prop);
+  }
 }

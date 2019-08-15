@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Sorter } from '../core/sorter';
 import { ISale } from '../shared/interfaces';
 import { SaleService } from '../core/sale.service';
 
@@ -11,7 +12,7 @@ export class SaleComponent implements OnInit {
 
   title: string;
   sales: ISale[] = [];
-  constructor(private saleService: SaleService) { }
+  constructor(private sorter: Sorter, private saleService: SaleService) { }
 
   ngOnInit() {
     this.title = 'Sales';
@@ -26,4 +27,7 @@ export class SaleComponent implements OnInit {
       () => console.log('getSales() retrieved sales'))
   }
 
+  sort(prop: string) {
+    this.sorter.sort(this.sales, prop);
+  }
 }

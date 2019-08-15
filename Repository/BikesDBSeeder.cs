@@ -148,9 +148,9 @@ namespace BeSpokedBikes.Repository
             //Salespersons
             List<Discount> discounts = new List<Discount>() {
                 new Discount(){ProductId=1, BeginDate= DateTime.ParseExact("01/01/2019", "dd/MM/yyyy", null),
-                EndDate= DateTime.ParseExact("12/01/2019", "dd/MM/yyyy", null), DiscountPercentage=15},
+                EndDate= DateTime.ParseExact("01/12/2019", "dd/MM/yyyy", null), DiscountPercentage=15},
                 new Discount(){ProductId=2, BeginDate= DateTime.ParseExact("01/01/2018", "dd/MM/yyyy", null),
-                EndDate= DateTime.ParseExact("12/01/2019", "dd/MM/yyyy", null), DiscountPercentage=10}
+                EndDate= DateTime.ParseExact("01/12/2019", "dd/MM/yyyy", null), DiscountPercentage=10}
             };
 
             return discounts;
