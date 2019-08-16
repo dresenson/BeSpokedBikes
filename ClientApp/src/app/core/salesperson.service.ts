@@ -24,6 +24,16 @@ export class SalespersonService {
       );
   }
 
+  getSalesperson(id: string): Observable<ISalesperson> {
+    return this.http.get<ISalesperson>(this.baseCustomersUrl + '/' + id)
+      .pipe(
+        map(salesperson => {
+          return salesperson;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
   getSalespersonsReport(): Observable<ISalespersonReport[]> {
     let reportUrl = this.baseCustomersUrl + '/report'
     return this.http.get<ISalespersonReport[]>(reportUrl)

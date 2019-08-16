@@ -12,7 +12,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CustomerComponent } from './customer/customer.component';
 
 import { CustomerService } from './core/customer.service';
-import { SalespersonComponent } from './salesperson/salesperson.component';
+import { SalespersonComponent } from './salesperson/salesperson.component'; 
+import { SalespersonEditComponent } from './salesperson/salesperson.edit.component';
 import { SalespersonService } from './core/salesperson.service';
 import { ProductComponent } from './product/product.component';
 import { ProductService } from './core/product.service';
@@ -32,7 +33,8 @@ import { SalespersonreportComponent } from './salespersonreport/salespersonrepor
     SalespersonComponent,
     ProductComponent,
     SaleComponent,
-    SalespersonreportComponent
+    SalespersonreportComponent,
+    SalespersonEditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -45,7 +47,7 @@ import { SalespersonreportComponent } from './salespersonreport/salespersonrepor
       { path: 'salespersons', component: SalespersonComponent },
       { path: 'products', component: ProductComponent },
       { path: 'sales', component: SaleComponent },
-      
+      { path: 'salespersons/:id', component: SalespersonEditComponent },
     ])
   ],
   providers: [CustomerService, SalespersonService, ProductService, SaleService, Sorter],

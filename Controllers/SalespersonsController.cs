@@ -10,7 +10,6 @@ using Microsoft.Extensions.Logging;
 
 namespace BeSpokedBikes.Controllers
 {
-    
     [ApiController]
     public class SalespersonsApiController : Controller
     {
@@ -54,6 +53,26 @@ namespace BeSpokedBikes.Controllers
             {
                 var salespersons = await _SalespersonsRepository.GetSalespersonsReportAsync();
                 return Ok(salespersons);
+            }
+            catch (Exception exp)
+            {
+                _Logger.LogError(exp.Message);
+                return BadRequest(new ApiResponse<Salesperson> { Status = false });
+            }
+        }
+
+        // GET api/customers/5
+        [Route("api/salespersons/{id}")]
+        [HttpGet]
+        [NoCache]
+        [ProducesResponseType(typeof(Salesperson), 200)]
+        [ProducesResponseType(typeof(ApiResponse<Salesperson>), 400)]
+        public async Task<ActionResult> Salespersons(int id)
+        {
+            try
+            {
+                var customer = await _SalespersonsRepository.GetSalespersonAsync(id);
+                return Ok(customer);
             }
             catch (Exception exp)
             {
